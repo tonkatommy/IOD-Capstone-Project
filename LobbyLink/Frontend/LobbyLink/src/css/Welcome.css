@@ -15,7 +15,7 @@ p {
     font-family: "Delius", cursive;
 }
 
-.welcome-container {
+.welcomePage-container {
     height: 100vh;
     background: linear-gradient(
         108deg,
@@ -25,18 +25,18 @@ p {
     );
 }
 
-.welcome-left,
-.welcome-right {
+.welcomePage-left,
+.welcomePage-right {
     padding: 2rem;
 }
 
-.welcome-logo {
+.welcomePage-logo {
     margin-bottom: 2rem;
     width: 375px;
     box-shadow: 7px 7px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.please-text {
+.welcomePage-please-text {
     margin-bottom: 3rem;
     font-size: 3rem;
     font-weight: Bold;
@@ -44,8 +44,8 @@ p {
     text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.btn-sign-in,
-.btn-sign-out {
+.welcomePage-btn-sign-in,
+.welcomePage-btn-sign-out {
     margin: 20px auto;
     width: 450px;
     height: 140px;
@@ -57,12 +57,12 @@ p {
     color: #171717;
 }
 
-.btn-sign-in {
+.welcomePage-btn-sign-in {
     border: 2px solid #0b8900;
     background: #25c517;
 }
 
-.btn-sign-out {
+.welcomePage-btn-sign-out {
     border: 2px solid #a40000;
     background: #d12b2b;
 }
