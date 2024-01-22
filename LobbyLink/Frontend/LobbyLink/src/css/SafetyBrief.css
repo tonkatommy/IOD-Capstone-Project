@@ -11,8 +11,10 @@
     padding: 50px 80px;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    /* gap: 40px; */
     align-self: stretch;
+
+    font-family: "Delius", cursive;
 
     border-radius: 100px;
     border: 2px solid #1e3244;
@@ -20,9 +22,24 @@
     box-shadow: 7px 7px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-iframe {
+h1,
+h2,
+h4 {
+    font-weight: bold;
     width: 100%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
+}
+
+p,
+li {
+    width: 100%;
+    font-size: 1.2rem;
+}
+
+.safetyBriefPage-title {
+    margin-top: 30px;
+}
+
+.safetyBriefPage-ack-text {
+    text-align: center;
+    color: #ec1c1c;
 }
