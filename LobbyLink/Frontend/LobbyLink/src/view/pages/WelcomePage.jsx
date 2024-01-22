@@ -1,9 +1,9 @@
+import "../../css/Welcome.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
-import SignInButton from "../SignInButton";
-import "../../css/Welcome.css";
+import SignInButton from "../../model/components/Buttons/SignInButton";
 import SignOutButton from "../../model/components/Buttons/SignOutButton";
 
 const WelcomePage = (params) => {

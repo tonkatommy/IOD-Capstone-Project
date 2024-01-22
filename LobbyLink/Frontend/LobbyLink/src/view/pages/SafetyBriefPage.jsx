@@ -1,4 +1,5 @@
 import Container from "react-bootstrap/esm/Container";
+import AckButton from "../../model/components/Buttons/AckButton";
 import "../../css/SafetyBrief.css";
 
 const SafetyBriefPage = (params) => {
@@ -149,6 +150,7 @@ const SafetyBriefPage = (params) => {
                     <br /> READ AND UNDERSTOOD
                     <br /> this Health & Safety Brief.
                 </h4>
+                <AckButton className="safetyBriefPage-ack-btn" />
             </Container>
         </Container>
     );
