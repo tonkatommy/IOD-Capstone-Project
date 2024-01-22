@@ -43,3 +43,17 @@ li {
     text-align: center;
     color: #ec1c1c;
 }
+
+.safetyBriefPage-ack-btn {
+    margin: 20px auto;
+    width: 450px;
+    height: 140px;
+    border-radius: 10px;
+    box-shadow: 7px 7px 4px 0px rgba(0, 0, 0, 0.25);
+    font-family: "Delius", cursive;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #171717;
+    border: 2px solid #0b8900;
+    background: #25c517;
+}
