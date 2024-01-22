@@ -2,6 +2,7 @@
     min-height: 100vh;
     padding: 20px;
     background: linear-gradient(137deg, #ec1c1c 0%, #5c0000 100%);
+    text-align: left;
 }
 
 .safetyBriefPage-inner-container {
@@ -10,11 +11,49 @@
     padding: 50px 80px;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    /* gap: 40px; */
     align-self: stretch;
+
+    font-family: "Delius", cursive;
 
     border-radius: 100px;
     border: 2px solid #1e3244;
     background: #c9e5ff;
     box-shadow: 7px 7px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+h1,
+h2,
+h4 {
+    font-weight: bold;
+    width: 100%;
+}
+
+p,
+li {
+    width: 100%;
+    font-size: 1.2rem;
+}
+
+.safetyBriefPage-title {
+    margin-top: 30px;
+}
+
+.safetyBriefPage-ack-text {
+    text-align: center;
+    color: #ec1c1c;
+}
+
+.safetyBriefPage-ack-btn {
+    margin: 20px auto;
+    width: 450px;
+    height: 140px;
+    border-radius: 10px;
+    box-shadow: 7px 7px 4px 0px rgba(0, 0, 0, 0.25);
+    font-family: "Delius", cursive;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #171717;
+    border: 2px solid #0b8900;
+    background: #25c517;
 }
