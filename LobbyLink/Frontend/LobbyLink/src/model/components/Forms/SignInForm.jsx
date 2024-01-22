@@ -4,8 +4,8 @@ import InputGroup from "react-bootstrap/esm/InputGroup";
 
 const SignInForm = (params) => {
     return (
-        <Container className="w-80">
-            <Form>
+        <Container>
+            <Form className="signInForm-form">
                 <InputGroup className="mb-3">
                     <InputGroup.Text id="basic-addon-idNo">
                         MD58 or ID No:
@@ -74,12 +74,12 @@ const SignInForm = (params) => {
                 </InputGroup>
                 <InputGroup className="mb-3">
                     <InputGroup.Text id="basic-addon-destination">
-                        Destibation:
+                        Destination:
                     </InputGroup.Text>
                     <Form.Control
                         size="lg"
-                        placeholder="(What unit and who are you going to see)"
-                        aria-label="IdNumber"
+                        placeholder="(What unit or who are you going to see)"
+                        aria-label="destination"
                         aria-describedby="basic-addon-destination"
                     />
                 </InputGroup>
