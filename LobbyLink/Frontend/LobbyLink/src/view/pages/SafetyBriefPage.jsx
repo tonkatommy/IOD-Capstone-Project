@@ -9,7 +9,7 @@ const SafetyBriefPage = (params) => {
             <Container
                 fluid
                 className="safetyBriefPage-inner-container">
-                Hello
+                Safety Brief Content
             </Container>
         </Container>
     );
