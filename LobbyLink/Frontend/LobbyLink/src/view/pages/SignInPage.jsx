@@ -5,6 +5,7 @@ import Image from "react-bootstrap/Image";
 import SignInButton from "../../model/components/Buttons/SignInButton";
 import GoBackButton from "../../model/components/Buttons/GoBackButton";
 import "../../css/SignIn.css";
+import SignInForm from "../../model/components/Forms/SignInForm";
 
 const SignInPage = (params) => {
     return (
@@ -23,6 +24,7 @@ const SignInPage = (params) => {
                     <p className="signInPage-required-text">
                         *All details required
                     </p>
+                    <SignInForm />
                 </Col>
                 <Col
                     md="6"
