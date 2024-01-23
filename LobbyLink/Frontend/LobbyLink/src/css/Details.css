@@ -1,0 +1,50 @@
+.detailsPage-container {
+    min-height: 100vh;
+    background: linear-gradient(108deg, #ffe927 0%, #7d7100 100%);
+}
+
+.detailsPage-title {
+    font-family: "Delius", cursive;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #1e3244;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.detailsPage-sub-title {
+    font-family: "Delius", cursive;
+    margin-bottom: 2rem;
+    color: #a40000;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.form-control {
+    font-family: "Delius", cursive;
+    font-size: 1.1rem;
+}
+
+.detailsPage-save-btn,
+.detailsPage-cancel-btn {
+    font-family: "Delius", cursive;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #171717;
+}
+
+.detailsPage-save-btn {
+    width: 12rem;
+    height: 4rem;
+    border-radius: 10px;
+    border: 2px solid #0b8900;
+    background: #25c517;
+    box-shadow: 7px 7px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.detailsPage-cancel-btn {
+    width: 12rem;
+    height: 4rem;
+    border-radius: 10px;
+    border: 2px solid #a40000;
+    background: #d12b2b;
+    box-shadow: 7px 7px 4px 0px rgba(0, 0, 0, 0.25);
+}
