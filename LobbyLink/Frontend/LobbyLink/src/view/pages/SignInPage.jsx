@@ -1,13 +1,24 @@
+import { useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import SignInButton from "../../model/components/Buttons/SignInButton";
 import GoBackButton from "../../model/components/Buttons/GoBackButton";
-import "../../css/SignIn.css";
 import SignInForm from "../../model/components/Forms/SignInForm";
+import "../../css/SignIn.css";
 
 const SignInPage = (params) => {
+    const navigate = useNavigate();
+
+    const handleSignInClick = (e) => {
+        navigate("/safety-brief");
+    };
+
+    const handleGoBackClick = (e) => {
+        navigate("/welcome");
+    };
+
     return (
         <Container
             fluid
@@ -34,8 +45,14 @@ const SignInPage = (params) => {
                         roundedCircle
                         className="signInPage-logo align-self-center"
                     />
-                    <SignInButton className="signInPage-btn-sign-in" />
-                    <GoBackButton className="signInPage-btn-go-back" />
+                    <SignInButton
+                        className="signInPage-btn-sign-in"
+                        onClick={handleSignInClick}
+                    />
+                    <GoBackButton
+                        className="signInPage-btn-go-back"
+                        onClick={handleGoBackClick}
+                    />
                 </Col>
             </Row>
         </Container>

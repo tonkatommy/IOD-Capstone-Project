@@ -5,8 +5,19 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import SignInButton from "../../model/components/Buttons/SignInButton";
 import SignOutButton from "../../model/components/Buttons/SignOutButton";
+import { useNavigate } from "react-router-dom";
 
 const WelcomePage = (params) => {
+    const navigate = useNavigate();
+
+    const handleSignInClick = (e) => {
+        navigate("/signin");
+    };
+
+    const handleSignOutClick = (e) => {
+        navigate("/welcome"); // TODO: change to database page when created
+    };
+
     return (
         <Container
             fluid
@@ -32,8 +43,14 @@ const WelcomePage = (params) => {
                         Upon arrival or departure
                     </p>
 
-                    <SignInButton className="welcomePage-btn-sign-in" />
-                    <SignOutButton className="welcomePage-btn-sign-out" />
+                    <SignInButton
+                        className="welcomePage-btn-sign-in"
+                        onClick={handleSignInClick}
+                    />
+                    <SignOutButton
+                        className="welcomePage-btn-sign-out"
+                        onClick={handleSignOutClick}
+                    />
                 </Col>
             </Row>
         </Container>

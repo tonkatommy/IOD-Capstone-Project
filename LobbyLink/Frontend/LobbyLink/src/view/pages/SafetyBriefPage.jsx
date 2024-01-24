@@ -1,8 +1,14 @@
 import Container from "react-bootstrap/esm/Container";
+import Alert from "react-bootstrap/Alert";
 import AckButton from "../../model/components/Buttons/AckButton";
 import "../../css/SafetyBrief.css";
 
 const SafetyBriefPage = (params) => {
+    const handleAckClick = (e) => {
+        // navigate("/welcome");
+        <Alert variant="success">You are signed in!! Yay!</Alert>;
+    };
+
     return (
         <Container
             fluid
@@ -150,7 +156,10 @@ const SafetyBriefPage = (params) => {
                     <br /> READ AND UNDERSTOOD
                     <br /> this Health & Safety Brief.
                 </h4>
-                <AckButton className="safetyBriefPage-ack-btn" />
+                <AckButton
+                    className="safetyBriefPage-ack-btn"
+                    onClick={handleAckClick}
+                />
             </Container>
         </Container>
     );
