@@ -6,6 +6,7 @@ import "../../css/SafetyBrief.css";
 const SafetyBriefPage = (params) => {
     const handleAckClick = (e) => {
         // navigate("/welcome");
+        console.log("Ack pressed");
         <Alert variant="success">You are signed in!! Yay!</Alert>;
     };
 
