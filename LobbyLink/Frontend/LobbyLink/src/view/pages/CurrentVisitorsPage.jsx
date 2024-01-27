@@ -1,7 +1,8 @@
-import Row from "react-bootstrap/esm/Row";
-import "../../css/CurrentVisitors.css";
 import Container from "react-bootstrap/esm/Container";
+import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
+import CurrentVisitorsTable from "../../model/components/Tables/CurrentVisitorsTable";
+import "../../css/CurrentVisitors.css";
 
 const CurrentVisitorsPage = (params) => {
     return (
@@ -16,6 +17,7 @@ const CurrentVisitorsPage = (params) => {
                     <p className="currentVisitorsPage-sub-text">
                         Find your name and press Sign Out
                     </p>
+                    <CurrentVisitorsTable />
                 </Col>
             </Row>
         </Container>
