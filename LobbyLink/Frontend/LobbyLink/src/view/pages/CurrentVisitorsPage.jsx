@@ -2,7 +2,8 @@ import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import CurrentVisitorsTable from "../../model/components/Tables/CurrentVisitorsTable";
-import "../../css/CurrentVisitors.css";
+import "../../css/pages/CurrentVisitors.css";
+import VisitorButton from "../../model/components/Buttons/VisitorButton";
 
 const CurrentVisitorsPage = (params) => {
     return (
@@ -18,6 +19,7 @@ const CurrentVisitorsPage = (params) => {
                         Find your name and press Sign Out
                     </p>
                     <CurrentVisitorsTable />
+                    <VisitorButton />
                 </Col>
             </Row>
         </Container>
