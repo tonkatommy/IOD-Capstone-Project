@@ -1,7 +1,7 @@
 import Container from "react-bootstrap/esm/Container";
 import Alert from "react-bootstrap/Alert";
 import AckButton from "../../model/components/Buttons/AckButton";
-import "../../css/SafetyBrief.css";
+import "../../css/pages/SafetyBrief.css";
 
 const SafetyBriefPage = (params) => {
     const handleAckClick = (e) => {
