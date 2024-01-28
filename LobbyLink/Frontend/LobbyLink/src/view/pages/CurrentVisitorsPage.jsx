@@ -18,7 +18,7 @@ const CurrentVisitorsPage = (params) => {
                     <p className="currentVisitorsPage-sub-text">
                         Find your name and press Sign Out
                     </p>
-                    <CurrentVisitorsTable />
+                    {/* <CurrentVisitorsTable /> */}
                     <VisitorButton />
                 </Col>
             </Row>
