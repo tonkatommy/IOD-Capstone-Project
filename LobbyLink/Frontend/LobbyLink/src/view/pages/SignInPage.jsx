@@ -6,7 +6,7 @@ import Image from "react-bootstrap/Image";
 import SignInButton from "../../model/components/Buttons/SignInButton";
 import GoBackButton from "../../model/components/Buttons/GoBackButton";
 import SignInForm from "../../model/components/Forms/SignInForm";
-import "../../css/SignIn.css";
+import "../../css/pages/SignIn.css";
 
 const SignInPage = (params) => {
     const navigate = useNavigate();
