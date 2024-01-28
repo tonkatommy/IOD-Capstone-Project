@@ -24,8 +24,25 @@
     color: darkgreen;
 }
 
+.visitor-destination {
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.3rem;
+}
+
 .bi-watch {
     color: darkred;
+}
+
+.visitor-time-in {
+    font-family: "Noto Sans Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "wdth" 75;
+    font-size: 0.8rem;
 }
 
 .visitor-button-sign-out {
