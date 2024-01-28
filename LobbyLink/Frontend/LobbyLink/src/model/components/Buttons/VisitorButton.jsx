@@ -3,7 +3,7 @@ import SignOutButton from "./SignOutButton";
 import "../../../css/components/VisitorButton.css";
 
 const VisitorButton = (params) => {
-    const handleSignOutClick = (params) => {
+    const handleSignOutClick = (e) => {
         console.log("Sign Out Pressed");
     };
 

@@ -1,12 +1,35 @@
+.currentVisitors-goBack-button {
+    position: fixed;
+    top: 3%;
+    right: 3%;
+    padding: 20px;
+    color: #171717;
+    background: #ff970e;
+    border-color: #171717;
+    font-weight: bold;
+    font-size: 1.1rem;
+    font-family: "Delius", cursive;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
 .currentVisitorsPage-container {
     height: 100vh;
-    background: linear-gradient(108deg, #6ce433 0%, #113600 100%);
+    /* background: linear-gradient(108deg, #6ce433 0%, #113600 100%); */
+}
+
+.currentVisitorsPage-title {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+    font-size: 3rem;
+    font-weight: bold;
+    font-family: "Lilita One", sans-serif;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .currentVisitorsPage-sub-text {
     margin-bottom: 1rem;
     font-size: 2rem;
-    font-weight: Bold;
+    font-weight: bold;
     font-family: "Delius Swash Caps", cursive;
     text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
