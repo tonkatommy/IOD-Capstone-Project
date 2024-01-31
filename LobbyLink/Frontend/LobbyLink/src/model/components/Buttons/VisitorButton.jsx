@@ -5,7 +5,7 @@ import Row from "react-bootstrap/esm/Row";
 import "../../../css/components/VisitorButton.css";
 
 const VisitorButton = (params) => {
-    const handleSignOutClick = (params) => {
+    const handleSignOutClick = (e) => {
         console.log("Sign Out Pressed");
     };
 
