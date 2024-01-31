@@ -1,0 +1,12 @@
+.currentVisitorsPage-container {
+    height: 100vh;
+    background: linear-gradient(108deg, #6ce433 0%, #113600 100%);
+}
+
+.currentVisitorsPage-sub-text {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: Bold;
+    font-family: "Delius Swash Caps", cursive;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}

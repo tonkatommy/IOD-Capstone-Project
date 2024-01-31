@@ -3,6 +3,7 @@ import WelcomePage from "../../view/pages/WelcomePage";
 import SignInPage from "../../view/pages/SignInPage";
 import SafetyBriefPage from "../../view/pages/SafetyBriefPage";
 import DetailsPage from "../../view/pages/DetailsPage";
+import CurrentVisitorsPage from "../../view/pages/CurrentVisitorsPage";
 
 const LobbyLinkRoutes = (params) => {
     return (
@@ -33,6 +34,11 @@ const LobbyLinkRoutes = (params) => {
                 <Route
                     path="/safety-brief"
                     element={<SafetyBriefPage />}
+                />
+                {/* Current Visitors route to CurrentVisitorsPage  */}
+                <Route
+                    path="/current-visitors"
+                    element={<CurrentVisitorsPage />}
                 />
             </Routes>
         </>

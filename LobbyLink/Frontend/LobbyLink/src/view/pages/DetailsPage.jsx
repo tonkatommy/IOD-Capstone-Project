@@ -1,7 +1,7 @@
 import Container from "react-bootstrap/esm/Container";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
-import "../../css/Details.css";
+import "../../css/pages/Details.css";
 import DetailsForm from "../../model/components/Forms/DetailsForm";
 import SignInButton from "../../model/components/Buttons/SignInButton";
 import SignOutButton from "../../model/components/Buttons/SignOutButton";

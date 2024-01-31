@@ -13,6 +13,7 @@ h2 {
 
 p {
     font-family: "Delius", cursive;
+    color: #171717;
 }
 
 .welcomePage-container {
@@ -36,6 +37,20 @@ p {
     box-shadow: 7px 7px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
+.welcomePage-welcome-text,
+.welcomePage-company-text {
+    color: #171717;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.welcomePage-welcome-text {
+    font-size: 3rem;
+}
+
+.welcomePage-company-text {
+    font-size: 5rem;
+}
+
 .welcomePage-please-text {
     margin-bottom: 3rem;
     font-size: 3rem;
@@ -50,7 +65,7 @@ p {
     width: 450px;
     height: 140px;
     border-radius: 10px;
-    box-shadow: 7px 7px 4px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 7px 7px 7px 0px rgba(0, 0, 0, 0.25);
     font-family: "Delius", cursive;
     font-size: 2rem;
     font-weight: 800;

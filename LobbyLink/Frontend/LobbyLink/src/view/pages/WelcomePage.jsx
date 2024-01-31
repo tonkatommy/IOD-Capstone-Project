@@ -1,4 +1,4 @@
-import "../../css/Welcome.css";
+import "../../css/pages/Welcome.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -31,8 +31,8 @@ const WelcomePage = (params) => {
                         roundedCircle
                         className="welcomePage-logo align-self-center"
                     />
-                    <h2 className="welcomePage-logo-subtext-1">Welcome to</h2>
-                    <h1 className="welcomePage-logo-subtext-2">LobbyLink</h1>
+                    <h2 className="welcomePage-welcome-text">Welcome to</h2>
+                    <h1 className="welcomePage-company-text">LobbyLink</h1>
                 </Col>
                 <Col
                     md="6"
