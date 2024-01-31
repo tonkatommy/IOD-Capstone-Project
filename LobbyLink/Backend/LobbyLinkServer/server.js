@@ -18,6 +18,20 @@ app.get("/", (req, res) => {
 let userRoutes = require("./routes/userRoutes");
 app.use("/api/users", userRoutes);
 
+
+// Employee Routes
+let employeeRoutes = require("./routes/employeeRoutes");
+app.use("/api/employees", employeeRoutes);
+
+// Visitor Routes
+let visitorRoutes = require("./routes/visitorRoutes");
+app.use("/api/visitors", visitorRoutes);
+
+// Log Routes
+let logRoutes = require("./routes/logRoutes");
+app.use("/api/logs", logRoutes);
+
+
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
