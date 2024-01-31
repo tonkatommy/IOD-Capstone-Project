@@ -23,6 +23,17 @@ const createUser = (data, res) => {
         });
 };
 
+const insertUsers = (data, res) => {
+    // creates a new user using JSON data POSTed in request body
+    console.log(data);
+    Models.User.insertMany(data)
+        .then((data) => res.send({ result: 200, data: data }))
+        .catch((err) => {
+            console.log(err);
+            res.send({ result: 500, error: err.message });
+        });
+};
+
 const updateUser = (req, res) => {
     // updates the user matching the ID from the param using
     // JSON data POSTed in request body
@@ -49,6 +60,7 @@ const deleteUser = (req, res) => {
 module.exports = {
     getUsers,
     createUser,
+    insertUsers,
     updateUser,
     deleteUser,
 };
