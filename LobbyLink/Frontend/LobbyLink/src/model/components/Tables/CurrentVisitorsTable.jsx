@@ -1,6 +1,6 @@
 import Table from "react-bootstrap/Table";
 
-const CurrentVisitorsTable = (params) => {
+const CurrentVisitorsTable = (props) => {
     return (
         <>
             <h1>Current Vivistors Table</h1>

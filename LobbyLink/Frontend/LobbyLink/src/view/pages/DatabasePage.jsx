@@ -1,17 +1,49 @@
+import { useNavigate } from "react-router-dom";
 import RedGradientBG from "../../model/components/Background/RedGradientBG";
 import DatabaseUsersTable from "../../model/components/Tables/DatabaseUsersTable";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import DBButton from "../../model/components/Buttons/DBButton";
 import Container from "react-bootstrap/esm/Container";
+import { useEffect } from "react";
+import GoBackButton from "../../model/components/Buttons/GoBackButton";
+import { useDatabaseContext } from "../../model/context/DatabaseContext";
+import axios from "axios";
 
 const DatabasePage = (props) => {
+    const { currentDB, updateDB } = useDatabaseContext();
+
+    const navigate = useNavigate();
+
+    const handleGoBackClick = (e) => {
+        navigate("/welcome");
+    };
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(
+                    "http://localhost:3037/api/users"
+                );
+                updateDB(response.data);
+                console.log("Getting Data:", currentDB);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        fetchData();
+    }, []);
+
     return (
         <>
             <RedGradientBG />
             <Container
                 fluid
                 className="db-container p-5">
+                <GoBackButton
+                    className="btn-db-goback"
+                    onClick={handleGoBackClick}
+                />
                 <Row className="">
                     <p className="db-title text-start fs-1 fw-bold">
                         Database Management
@@ -50,7 +82,7 @@ const DatabasePage = (props) => {
                         />
                     </Col>
                     <Col className="col-db-table">
-                        <DatabaseUsersTable />
+                        <DatabaseUsersTable db={currentDB} />
                     </Col>
                 </Row>
             </Container>

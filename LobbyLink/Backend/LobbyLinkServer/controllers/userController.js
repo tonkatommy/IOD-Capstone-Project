@@ -38,7 +38,7 @@ const updateUser = (req, res) => {
     // updates the user matching the ID from the param using
     // JSON data POSTed in request body
     console.log(req.body);
-    Models.User.findByIdAndUpdate(req.params.id, req.body, {
+    Models.User.findByIdAndUpdate(req.props.id, req.body, {
         new: true,
     })
         .then((data) => res.send({ result: 200, data: data }))
@@ -49,7 +49,7 @@ const updateUser = (req, res) => {
 };
 const deleteUser = (req, res) => {
     // deletes the user matching the ID from the param
-    Models.User.findByIdAndDelete(req.params.id)
+    Models.User.findByIdAndDelete(req.props.id)
         .then((data) => res.send({ result: 200, data: data }))
         .catch((err) => {
             console.log(err);

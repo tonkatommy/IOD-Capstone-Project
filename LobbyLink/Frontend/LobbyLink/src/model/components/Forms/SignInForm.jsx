@@ -2,7 +2,7 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/esm/Container";
 import InputGroup from "react-bootstrap/esm/InputGroup";
 
-const SignInForm = (params) => {
+const SignInForm = (props) => {
     return (
         <Container>
             <Form className="signInForm-form">

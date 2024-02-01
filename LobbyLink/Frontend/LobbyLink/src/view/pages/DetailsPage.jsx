@@ -6,7 +6,7 @@ import DetailsForm from "../../model/components/Forms/DetailsForm";
 import SignInButton from "../../model/components/Buttons/SignInButton";
 import SignOutButton from "../../model/components/Buttons/SignOutButton";
 
-const DetailsPage = (params) => {
+const DetailsPage = (props) => {
     const handleSaveClick = () => {
         console.log("Save CLicked");
     };

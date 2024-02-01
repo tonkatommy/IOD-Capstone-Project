@@ -1,11 +1,11 @@
 import Button from "react-bootstrap/Button";
 
-const SignInButton = (params) => {
+const SignInButton = (props) => {
     return (
         <Button
-            className={params.className}
-            onClick={params.onClick}>
-            {params.buttonText || "SIGN IN"}
+            className={props.className}
+            onClick={props.onClick}>
+            {props.buttonText || "SIGN IN"}
         </Button>
     );
 };

@@ -1,11 +1,12 @@
 import Button from "react-bootstrap/Button";
 
-const DBButton = (params) => {
+const DBButton = (props) => {
     return (
         <Button
-            className={params.className}
-            onClick={params.onClick}>
-            {params.buttonText || "DB Button"}
+            id={props.id}
+            className={props.className}
+            onClick={props.onClick}>
+            {props.buttonText || "DB Button"}
         </Button>
     );
 };

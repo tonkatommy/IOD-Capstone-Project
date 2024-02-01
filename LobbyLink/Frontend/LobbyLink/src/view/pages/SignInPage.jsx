@@ -8,7 +8,7 @@ import GoBackButton from "../../model/components/Buttons/GoBackButton";
 import SignInForm from "../../model/components/Forms/SignInForm";
 import "../../css/pages/SignIn.css";
 
-const SignInPage = (params) => {
+const SignInPage = (props) => {
     const navigate = useNavigate();
 
     const handleSignInClick = (e) => {

@@ -1,11 +1,11 @@
 import Button from "react-bootstrap/Button";
 
-const SignOutButton = (params) => {
+const SignOutButton = (props) => {
     return (
         <Button
-            className={params.className}
-            onClick={params.onClick}>
-            {params.buttonText || "SIGN OUT"}
+            className={props.className}
+            onClick={props.onClick}>
+            {props.buttonText || "SIGN OUT"}
         </Button>
     );
 };

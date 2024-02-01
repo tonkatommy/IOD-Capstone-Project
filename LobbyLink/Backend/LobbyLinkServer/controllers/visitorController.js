@@ -26,7 +26,7 @@ const updateVisitor = (req, res) => {
     // updates the user matching the ID from the param using
     // JSON data POSTed in request body
     console.log(req.body);
-    Models.Visitor.findByIdAndUpdate(req.params.id, req.body, {
+    Models.Visitor.findByIdAndUpdate(req.props.id, req.body, {
         new: true,
     })
         .then((data) => res.send({ result: 200, data: data }))
@@ -37,7 +37,7 @@ const updateVisitor = (req, res) => {
 };
 const deleteVisitor = (req, res) => {
     // deletes the user matching the ID from the param
-    Models.Visitor.findByIdAndDelete(req.params.id)
+    Models.Visitor.findByIdAndDelete(req.props.id)
         .then((data) => res.send({ result: 200, data: data }))
         .catch((err) => {
             console.log(err);

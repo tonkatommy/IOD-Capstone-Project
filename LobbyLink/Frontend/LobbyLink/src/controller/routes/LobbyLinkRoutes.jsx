@@ -6,7 +6,7 @@ import DetailsPage from "../../view/pages/DetailsPage";
 import CurrentVisitorsPage from "../../view/pages/CurrentVisitorsPage";
 import DatabasePage from "../../view/pages/DatabasePage";
 
-const LobbyLinkRoutes = (params) => {
+const LobbyLinkRoutes = (props) => {
     return (
         <>
             {/* Main Routes */}
