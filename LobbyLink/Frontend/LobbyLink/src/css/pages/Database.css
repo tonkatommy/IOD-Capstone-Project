@@ -1,1 +1,26 @@
+.db-container {
+    min-height: 100vh;
+}
 
+/* Text */
+.db-title {
+    color: #1e3244;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Buttons */
+
+.btn-db {
+    width: 80%;
+    height: 100px;
+    font-family: "Delius", cursive;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #1e3244;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.btn-db-add-user {
+    background-color: #25c517;
+    border-color: #25c517;
+}
