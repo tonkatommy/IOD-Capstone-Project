@@ -1,27 +1,79 @@
 import { useNavigate } from "react-router-dom";
 import RedGradientBG from "../../model/components/Background/RedGradientBG";
 import "../../css/pages/Database.css";
-// import DatabaseUsersTable from "../../model/components/Tables/DatabaseUsersTable";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import DBButton from "../../model/components/Buttons/DBButton";
 import Container from "react-bootstrap/esm/Container";
-import { useEffect } from "react";
-// import { useGetData } from "../../controller/hooks/useGetData";
+import { useEffect, useState } from "react";
 import GoBackButton from "../../model/components/Buttons/GoBackButton";
 import { useDatabaseContext } from "../../model/context/DatabaseContext";
 import axios from "axios";
 
 const DatabasePage = (props) => {
     const { currentDB, updateDB } = useDatabaseContext();
+    const { docSelection, setDocSelection } = useState([]);
 
     const navigate = useNavigate();
+
+    // ***************
+    // jQuery Functions
+    // ***************
+
+    let $table = $("#db-table");
+
+    $(function mounted() {
+        console.log(
+            "bootstrapTable: ",
+            currentDB ? currentDB.data : "undefined"
+        );
+        // let data = currentDB.data;
+        $table.bootstrapTable({
+            data: currentDB ? currentDB.data : null,
+            sortReset: true,
+        });
+    });
 
     const handleGoBackClick = (e) => {
         navigate("/welcome");
     };
 
-    // updateDB(useGetData("http://localhost:3037/api/users"));
+    const handleAddClick = (e) => {
+        navigate("/welcome");
+    };
+
+    const handleRemoveClick = (e) => {
+        const docData = JSON.stringify($table.bootstrapTable("getSelections"));
+        console.log("handleRemoveClick: ", docData);
+        if (docData === null) {
+            alert("Please select a document to remove");
+            return;
+        } else {
+            // setDocSelection(...docData);
+        }
+        console.log("docSelection:", docSelection);
+        if (docSelection.length > 0) {
+            docSelection.map(async (doc) => {
+                await axios
+                    .delete(`http://localhost:3037/api/${doc._id}`)
+                    .then((response) => {
+                        console.log("Document deleted successfully");
+                    })
+                    .catch((error) => {
+                        console.error("There was an error!", error);
+                    });
+            });
+        } else {
+        }
+    };
+
+    const handleSetEmployeeClick = (e) => {
+        navigate("/welcome");
+    };
+
+    const handleSetVisitorClick = (e) => {
+        navigate("/welcome");
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -41,20 +93,6 @@ const DatabasePage = (props) => {
     }, []);
 
     console.log("CurrentDB:", currentDB);
-
-    let $table = $("#db-table");
-
-    $(function mounted() {
-        console.log(
-            "bootstrapTable: ",
-            currentDB ? currentDB.data : "undefined"
-        );
-        // let data = currentDB.data;
-        $table.bootstrapTable({
-            data: currentDB ? currentDB.data : null,
-            sortReset: true,
-        });
-    });
 
     return (
         <>
@@ -81,29 +119,37 @@ const DatabasePage = (props) => {
                                 Add a new User to the DB:
                             </p>
                             <DBButton
+                                id="add-user-btn"
                                 className="btn-db btn-db-add-user mb-3"
                                 buttonText="Add User"
+                                onClick={handleAddClick}
                             />
                             <p className="text-start mb-0 fs-6 ">
                                 Remove a User from the DB:
                             </p>
                             <DBButton
+                                id="remove-user-btn"
                                 className="btn-db btn-db-remove-user mb-3"
                                 buttonText="Remove User"
+                                onClick={handleRemoveClick}
                             />
                             <p className="text-start mb-0 fs-6 ">
                                 Set user type to Employee:
                             </p>
                             <DBButton
+                                id="set-employee-btn"
                                 className="btn-db btn-db-set-employee mb-3"
                                 buttonText="Set Employee"
+                                onClick={handleSetEmployeeClick}
                             />
                             <p className="text-start mb-0 fs-6 ">
                                 Set User type to Visitor:
                             </p>
                             <DBButton
+                                id="set-visitor-btn"
                                 className="btn-db btn-db-set-visitor mb-3"
                                 buttonText="Set Visitor"
+                                onClick={handleSetVisitorClick}
                             />
                         </div>
                     </Col>

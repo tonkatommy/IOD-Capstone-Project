@@ -1,4 +1,4 @@
-import LobbyLinkRoutes from "./controller/routes/LobbyLinkRoutes";
+import LobbyLinkRoutes from "./controllers/routes/LobbyLinkRoutes";
 import "./App.css";
 
 function App() {
