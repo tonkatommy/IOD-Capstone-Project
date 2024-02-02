@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const path = require("path");
 
@@ -8,8 +9,13 @@ require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
 // Create connection to MongoDB
 let dbConnect = require("./dbConnect");
 
+// Use CORS npm package
+app.use(cors());
+
 // parse requests of content-type - application / json;
 app.use(express.json());
+
+// index route
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to my MongoDB application." });
 });

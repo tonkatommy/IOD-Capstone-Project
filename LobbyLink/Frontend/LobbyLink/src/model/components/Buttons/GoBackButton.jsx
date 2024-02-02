@@ -1,10 +1,10 @@
 import Button from "react-bootstrap/Button";
 
-const GoBackButton = (params) => {
+const GoBackButton = (props) => {
     return (
         <Button
-            className={params.className}
-            onClick={params.onClick}>
+            className={props.className}
+            onClick={props.onClick}>
             Go Back
         </Button>
     );
