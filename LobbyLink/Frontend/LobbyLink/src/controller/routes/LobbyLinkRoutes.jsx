@@ -4,8 +4,9 @@ import SignInPage from "../../view/pages/SignInPage";
 import SafetyBriefPage from "../../view/pages/SafetyBriefPage";
 import DetailsPage from "../../view/pages/DetailsPage";
 import CurrentVisitorsPage from "../../view/pages/CurrentVisitorsPage";
+import DatabasePage from "../../view/pages/DatabasePage";
 
-const LobbyLinkRoutes = (params) => {
+const LobbyLinkRoutes = (props) => {
     return (
         <>
             {/* Main Routes */}
@@ -39,6 +40,11 @@ const LobbyLinkRoutes = (params) => {
                 <Route
                     path="/current-visitors"
                     element={<CurrentVisitorsPage />}
+                />
+                {/* Database route to DatabasePage  */}
+                <Route
+                    path="/database"
+                    element={<DatabasePage />}
                 />
             </Routes>
         </>

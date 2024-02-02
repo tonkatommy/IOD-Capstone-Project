@@ -1,0 +1,68 @@
+.db-container {
+    min-height: 100vh;
+}
+
+.db-table-container {
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+/* Text */
+.db-title {
+    color: #1e3244;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Buttons */
+
+.btn-db {
+    width: 80%;
+    height: 100px;
+    font-family: "Delius", cursive;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #1e3244;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.btn-db-add-user {
+    background-color: #25c517;
+    border-color: #25c517;
+}
+
+.btn-db-remove-user {
+    background-color: #ff9b00;
+    border-color: #ff9b00;
+}
+
+.btn-db-set-employee {
+    background-color: #54c2f6;
+    border-color: #54c2f6;
+}
+
+.btn-db-set-visitor {
+    background-color: #bc50ff;
+    border-color: #bc50ff;
+}
+
+.btn-db-goback {
+    position: fixed;
+    top: 3%;
+    right: 3%;
+    padding: 20px;
+    color: #171717;
+    background: #ff970e;
+    border-color: #171717;
+    font-weight: bold;
+    font-size: 1.1rem;
+    font-family: "Delius", cursive;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+/* Bootstrap-Table */
+.select,
+#locale {
+    width: 100%;
+}
+.like {
+    margin-right: 10px;
+}

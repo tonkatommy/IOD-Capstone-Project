@@ -3,7 +3,7 @@ import Alert from "react-bootstrap/Alert";
 import AckButton from "../../model/components/Buttons/AckButton";
 import "../../css/pages/SafetyBrief.css";
 
-const SafetyBriefPage = (params) => {
+const SafetyBriefPage = (props) => {
     const handleAckClick = (e) => {
         // navigate("/welcome");
         console.log("Ack pressed");

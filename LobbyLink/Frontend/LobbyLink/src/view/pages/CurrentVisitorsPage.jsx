@@ -5,16 +5,28 @@ import Col from "react-bootstrap/esm/Col";
 import GoBackButton from "../../model/components/Buttons/GoBackButton";
 import VisitorButton from "../../model/components/Buttons/VisitorButton";
 import GreenGradientBG from "../../model/components/Background/GreenGradientBG";
+
+import { useNavigate } from "react-router-dom";
+=======
 import "../../css/pages/CurrentVisitors.css";
 
-const CurrentVisitorsPage = (params) => {
+
+const CurrentVisitorsPage = (props) => {
+    const navigate = useNavigate();
+
+    const handleGoBackClick = (e) => {
+        navigate("/welcome");
+    };
     return (
         <>
             <GreenGradientBG />
             <Container
                 fluid
                 className="currentVisitorsPage-container">
-                <GoBackButton className={"currentVisitors-goBack-button z-3"} />
+                <GoBackButton
+                    onClick={handleGoBackClick}
+                    className="currentVisitors-goBack-button z-3"
+                />
                 <Row className="justify-content-center">
                     <Col
                         md="8"

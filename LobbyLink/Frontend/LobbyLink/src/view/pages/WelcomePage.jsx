@@ -7,7 +7,7 @@ import SignInButton from "../../model/components/Buttons/SignInButton";
 import SignOutButton from "../../model/components/Buttons/SignOutButton";
 import { useNavigate } from "react-router-dom";
 
-const WelcomePage = (params) => {
+const WelcomePage = (props) => {
     const navigate = useNavigate();
 
     const handleSignInClick = (e) => {
@@ -15,7 +15,7 @@ const WelcomePage = (params) => {
     };
 
     const handleSignOutClick = (e) => {
-        navigate("/welcome"); // TODO: change to database page when created
+        navigate("/current-visitors"); // TODO: change to database page when created
     };
 
     return (
