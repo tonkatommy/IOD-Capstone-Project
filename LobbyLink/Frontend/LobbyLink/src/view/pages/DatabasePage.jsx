@@ -1,12 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import RedGradientBG from "../../model/components/Background/RedGradientBG";
-import DatabaseUsersTable from "../../model/components/Tables/DatabaseUsersTable";
+import "../../css/pages/Database.css";
+// import DatabaseUsersTable from "../../model/components/Tables/DatabaseUsersTable";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import DBButton from "../../model/components/Buttons/DBButton";
 import Container from "react-bootstrap/esm/Container";
 import { useEffect } from "react";
-import { useGetData } from "../../controller/hooks/useGetData";
+// import { useGetData } from "../../controller/hooks/useGetData";
 import GoBackButton from "../../model/components/Buttons/GoBackButton";
 import { useDatabaseContext } from "../../model/context/DatabaseContext";
 import axios from "axios";
@@ -44,9 +45,15 @@ const DatabasePage = (props) => {
     let $table = $("#db-table");
 
     $(function mounted() {
-        console.log("bootstrapTable: ", props.db);
-        let data = props.db;
-        $table.bootstrapTable({ data: currentDB ? currentDB.data : null });
+        console.log(
+            "bootstrapTable: ",
+            currentDB ? currentDB.data : "undefined"
+        );
+        // let data = currentDB.data;
+        $table.bootstrapTable({
+            data: currentDB ? currentDB.data : null,
+            sortReset: true,
+        });
     });
 
     return (
@@ -103,19 +110,23 @@ const DatabasePage = (props) => {
                     <Col className="col-db-table">
                         <Container
                             fluid
-                            className="db-table-container rounded-3 p-0">
+                            className="db-table-container overflow-visible">
                             <>
                                 <table
                                     id="db-table"
-                                    className="table"
+                                    className="table rounded-3 overflow-hidden "
                                     data-toggle="db-table"
                                     data-multiple-select-row="true"
                                     data-click-to-select="true"
-                                    data-side-pagination="server"
                                     data-pagination="true"
+                                    data-show-pagination-switch="true"
                                     data-search="true"
+                                    data-show-search-clear-button="true"
                                     data-show-columns="true"
-                                    data-show-refresh="true">
+                                    data-show-columns-toggle-all="true"
+                                    data-show-refresh="true"
+                                    data-sort-empty-last="true"
+                                    data-show-toggle="true">
                                     <thead>
                                         <tr className="table-primary">
                                             <th
