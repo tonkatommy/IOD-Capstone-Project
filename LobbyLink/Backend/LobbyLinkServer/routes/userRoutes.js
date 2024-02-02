@@ -12,10 +12,12 @@ router.post("/create", (req, res) => {
     Controllers.userController.createUser(req.body, res);
 });
 
+
 // Adds a POST route to insertMany users
 router.post("/insertMany", (req, res) => {
     Controllers.userController.insertUsers(req.body, res);
 });
+
 
 // Adds a PUT route to update a user
 router.put("/:id", (req, res) => {

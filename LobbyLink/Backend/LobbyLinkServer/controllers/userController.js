@@ -34,6 +34,7 @@ const insertUsers = (data, res) => {
         });
 };
 
+
 const updateUser = (req, res) => {
     // updates the user matching the ID from the param using
     // JSON data POSTed in request body

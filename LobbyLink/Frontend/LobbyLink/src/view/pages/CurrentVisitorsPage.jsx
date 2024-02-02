@@ -3,10 +3,13 @@ import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 // import CurrentVisitorsTable from "../../model/components/Tables/CurrentVisitorsTable";
 import GoBackButton from "../../model/components/Buttons/GoBackButton";
-import "../../css/pages/CurrentVisitors.css";
 import VisitorButton from "../../model/components/Buttons/VisitorButton";
 import GreenGradientBG from "../../model/components/Background/GreenGradientBG";
+
 import { useNavigate } from "react-router-dom";
+=======
+import "../../css/pages/CurrentVisitors.css";
+
 
 const CurrentVisitorsPage = (props) => {
     const navigate = useNavigate();
