@@ -7,9 +7,8 @@ import VisitorButton from "../../model/components/Buttons/VisitorButton";
 import GreenGradientBG from "../../model/components/Background/GreenGradientBG";
 
 import { useNavigate } from "react-router-dom";
-=======
-import "../../css/pages/CurrentVisitors.css";
 
+import "../../css/pages/CurrentVisitors.css";
 
 const CurrentVisitorsPage = (props) => {
     const navigate = useNavigate();
