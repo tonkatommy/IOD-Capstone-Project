@@ -1,18 +1,34 @@
 import { useNavigate } from "react-router-dom";
 import RedGradientBG from "../../model/components/Background/RedGradientBG";
-import DatabaseUsersTable from "../../model/components/Tables/DatabaseUsersTable";
+import "../../css/pages/Database.css";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import DBButton from "../../model/components/Buttons/DBButton";
 import Container from "react-bootstrap/esm/Container";
-import { useEffect } from "react";
-import { useGetData } from "../../controller/hooks/useGetData";
+import { useEffect, useState } from "react";
 import GoBackButton from "../../model/components/Buttons/GoBackButton";
 import { useDatabaseContext } from "../../model/context/DatabaseContext";
 import axios from "axios";
+// import EnhancedTable from "../../model/components/Tables/EnhancedTable";
+// import DBDataGrid from "../../model/components/Tables/DBDataGrid";
+import DBGrid from "../../model/components/Tables/DBGrid";
+import {
+    SelectionProvider,
+    useSelectionContext,
+} from "../../model/context/SelectionContext";
+import { useRowsContext } from "../../model/context/RowsContext";
+// import DataTable from "../../model/components/Tables/ButtonGrid";
 
 const DatabasePage = (props) => {
     const { currentDB, updateDB } = useDatabaseContext();
+    const { rowSelection, updateSelection } = useSelectionContext();
+    const { currentRows, setCurrentRows } = useRowsContext();
+    // const [docSelection, setDocSelection] = useState([]);
+
+    // const getSelection = (selection) => {
+    //     setDocSelection(selection);
+    //     console.log("setDocSelection: ", selection);
+    // };
 
     const navigate = useNavigate();
 
@@ -20,34 +36,76 @@ const DatabasePage = (props) => {
         navigate("/welcome");
     };
 
-    // updateDB(useGetData("http://localhost:3037/api/users"));
+    const handleAddClick = (e) => {
+        const newRow = {
+            _id: "New",
+            title: "New",
+            firstName: "",
+            lastName: "",
+            origin: "",
+            contact: "",
+        };
+
+        // Add the new row to the existing rows
+        setCurrentRows((currentRows) => {
+            const updatedRows = [...currentRows];
+            updatedRows.unshift(newRow);
+            return updatedRows;
+        });
+    };
+
+    const handleRemoveClick = (e) => {
+        console.log("handleRemoveClick: ", rowSelection);
+        if (rowSelection.length < 1) {
+            alert("Please select a document to remove");
+            return;
+        }
+        console.log("docSelection:", rowSelection);
+        if (rowSelection.length > 0) {
+            rowSelection.map(async (doc) => {
+                await axios
+                    .delete(`http://localhost:3037/api/users/${doc}`)
+                    .then((response) => {
+                        console.log("Document deleted successfully");
+                    })
+                    .catch((error) => {
+                        console.error("There was an error!", error);
+                    });
+            });
+        }
+        updateSelection([]);
+        fetchData();
+        console.log("handleRemoveClick END: ", rowSelection);
+    };
+
+    const handleSetEmployeeClick = (e) => {
+        navigate("/welcome");
+    };
+
+    const handleSetVisitorClick = (e) => {
+        navigate("/welcome");
+    };
+
+    const fetchData = async () => {
+        console.log("Start of fetch");
+
+        await axios
+            .get("http://localhost:3037/api/users")
+            .then((res) => {
+                console.log("Axios .then():", res.data);
+                updateDB(res.data);
+                setCurrentRows(res.data.data);
+            })
+            .catch((error) => {
+                console.error("Axios .error():", error);
+            });
+    };
 
     useEffect(() => {
-        const fetchData = async () => {
-            console.log("Start of fetch");
-
-            await axios
-                .get("http://localhost:3037/api/users")
-                .then((res) => {
-                    console.log("Axios .then():", res.data);
-                    updateDB(res.data);
-                })
-                .catch((error) => {
-                    console.error("Axios .error():", error);
-                });
-        };
         fetchData();
     }, []);
 
     console.log("CurrentDB:", currentDB);
-
-    let $table = $("#db-table");
-
-    $(function mounted() {
-        console.log("bootstrapTable: ", props.db);
-        let data = props.db;
-        $table.bootstrapTable({ data: currentDB ? currentDB.data : null });
-    });
 
     return (
         <>
@@ -74,88 +132,51 @@ const DatabasePage = (props) => {
                                 Add a new User to the DB:
                             </p>
                             <DBButton
+                                id="add-user-btn"
                                 className="btn-db btn-db-add-user mb-3"
                                 buttonText="Add User"
+                                onClick={handleAddClick}
                             />
                             <p className="text-start mb-0 fs-6 ">
                                 Remove a User from the DB:
                             </p>
                             <DBButton
+                                id="remove-user-btn"
                                 className="btn-db btn-db-remove-user mb-3"
                                 buttonText="Remove User"
+                                onClick={handleRemoveClick}
                             />
                             <p className="text-start mb-0 fs-6 ">
                                 Set user type to Employee:
                             </p>
                             <DBButton
+                                id="set-employee-btn"
                                 className="btn-db btn-db-set-employee mb-3"
                                 buttonText="Set Employee"
+                                onClick={handleSetEmployeeClick}
                             />
                             <p className="text-start mb-0 fs-6 ">
                                 Set User type to Visitor:
                             </p>
                             <DBButton
+                                id="set-visitor-btn"
                                 className="btn-db btn-db-set-visitor mb-3"
                                 buttonText="Set Visitor"
+                                onClick={handleSetVisitorClick}
                             />
                         </div>
                     </Col>
                     <Col className="col-db-table">
-                        <Container
-                            fluid
-                            className="db-table-container rounded-3 p-0">
-                            <>
-                                <table
-                                    id="db-table"
-                                    className="table"
-                                    data-toggle="db-table"
-                                    data-multiple-select-row="true"
-                                    data-click-to-select="true"
-                                    data-side-pagination="server"
-                                    data-pagination="true"
-                                    data-search="true"
-                                    data-show-columns="true"
-                                    data-show-refresh="true">
-                                    <thead>
-                                        <tr className="table-primary">
-                                            <th
-                                                data-field="state"
-                                                data-checkbox="true"></th>
-                                            <th
-                                                data-field="_id"
-                                                data-sortable="true">
-                                                ID#
-                                            </th>
-                                            <th
-                                                data-field="title"
-                                                data-sortable="true">
-                                                Title
-                                            </th>
-                                            <th
-                                                data-field="firstName"
-                                                data-sortable="true">
-                                                First Name
-                                            </th>
-                                            <th
-                                                data-field="lastName"
-                                                data-sortable="true">
-                                                Last Name
-                                            </th>
-                                            <th
-                                                data-field="origin"
-                                                data-sortable="true">
-                                                Origin
-                                            </th>
-                                            <th
-                                                data-field="contact"
-                                                data-sortable="true">
-                                                Contact
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </>
-                        </Container>
+                        <div className="db-table-container">
+                            {currentDB ? (
+                                // <EnhancedTable db={currentDB} />
+                                // <DBDataGrid />
+                                <DBGrid rows={currentRows} />
+                            ) : (
+                                // <DataTable />
+                                <p>Loading...</p>
+                            )}
+                        </div>
                     </Col>
                 </Row>
             </Container>

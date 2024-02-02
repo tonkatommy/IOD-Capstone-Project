@@ -2,10 +2,6 @@
     min-height: 100vh;
 }
 
-.db-table-container {
-    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
-
 /* Text */
 .db-title {
     color: #1e3244;
@@ -59,10 +55,19 @@
 }
 
 /* Bootstrap-Table */
-.select,
-#locale {
-    width: 100%;
-}
-.like {
-    margin-right: 10px;
-}
+
+/* .fixed-table-body,
+div.float-right.pagination,
+#root
+    > div.db-container.p-5.container-fluid
+    > div.db-content.row
+    > div.col-db-table.col
+    > div
+    > div.bootstrap-table.bootstrap5
+    > div.fixed-table-pagination
+    > div.float-left.pagination-detail
+    > div
+    > div {
+    overflow: visible !important;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+} */

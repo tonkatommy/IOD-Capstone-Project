@@ -6,6 +6,7 @@ import Image from "react-bootstrap/Image";
 import SignInButton from "../../model/components/Buttons/SignInButton";
 import SignOutButton from "../../model/components/Buttons/SignOutButton";
 import { useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 const WelcomePage = (props) => {
     const navigate = useNavigate();
@@ -16,6 +17,10 @@ const WelcomePage = (props) => {
 
     const handleSignOutClick = (e) => {
         navigate("/current-visitors"); // TODO: change to database page when created
+    };
+
+    const handleDBClick = (e) => {
+        navigate("/database");
     };
 
     return (
@@ -51,6 +56,11 @@ const WelcomePage = (props) => {
                         className="welcomePage-btn-sign-out"
                         onClick={handleSignOutClick}
                     />
+                    <Button
+                        className="btn btn-warning mx-auto"
+                        onClick={handleDBClick}>
+                        DATABASE
+                    </Button>
                 </Col>
             </Row>
         </Container>

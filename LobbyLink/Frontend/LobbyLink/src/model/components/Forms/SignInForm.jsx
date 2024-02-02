@@ -28,12 +28,15 @@ const SignInForm = (props) => {
                 className="signInForm-form needs-validation"
                 noValidate>
                 <InputGroup className="mb-3 has-validation">
-                    <InputGroup.Text id="basic-addon-idNo">
+                    <InputGroup.Text
+                        id="basic-addon-idNo"
+                        className="signIn-input-group-text">
                         MD58 or ID No:
                     </InputGroup.Text>
                     <Form.Control
                         size="lg"
                         id="id-input"
+                        className="signIn-form-control"
                         placeholder="(Must be unique to you)"
                         value={userId}
                         onChange={(e) => setUserId(e.target.value)}
@@ -42,12 +45,15 @@ const SignInForm = (props) => {
                     />
                 </InputGroup>
                 <InputGroup className="mb-3">
-                    <InputGroup.Text id="basic-addon-title">
+                    <InputGroup.Text
+                        id="basic-addon-title"
+                        className="signIn-input-group-text">
                         Rank or Title:
                     </InputGroup.Text>
                     <Form.Control
                         size="lg"
                         id="title-input"
+                        className="signIn-form-control"
                         placeholder="(Service rank or Civilian title)"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
@@ -56,12 +62,15 @@ const SignInForm = (props) => {
                     />
                 </InputGroup>
                 <InputGroup className="mb-3">
-                    <InputGroup.Text id="basic-addon-first-name">
+                    <InputGroup.Text
+                        id="basic-addon-first-name"
+                        className="signIn-input-group-text">
                         First Name:
                     </InputGroup.Text>
                     <Form.Control
                         size="lg"
                         id="first-name-input"
+                        className="signIn-form-control"
                         placeholder=""
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
@@ -70,12 +79,15 @@ const SignInForm = (props) => {
                     />
                 </InputGroup>
                 <InputGroup className="mb-3">
-                    <InputGroup.Text id="basic-addon-last-name">
+                    <InputGroup.Text
+                        id="basic-addon-last-name"
+                        className="signIn-input-group-text">
                         Last Name:
                     </InputGroup.Text>
                     <Form.Control
                         size="lg"
                         id="last-name-input"
+                        className="signIn-form-control"
                         placeholder=""
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
@@ -84,12 +96,15 @@ const SignInForm = (props) => {
                     />
                 </InputGroup>
                 <InputGroup className="mb-3">
-                    <InputGroup.Text id="basic-addon-contact">
+                    <InputGroup.Text
+                        id="basic-addon-contact"
+                        className="signIn-input-group-text">
                         Contact No:
                     </InputGroup.Text>
                     <Form.Control
                         size="lg"
                         id="contact-input"
+                        className="signIn-form-control"
                         placeholder="Contact No (Ext or Mobile)"
                         value={contact}
                         onChange={(e) => setContact(e.target.value)}
@@ -98,12 +113,15 @@ const SignInForm = (props) => {
                     />
                 </InputGroup>
                 <InputGroup className="mb-3">
-                    <InputGroup.Text id="basic-addon-origin">
+                    <InputGroup.Text
+                        id="basic-addon-origin"
+                        className="signIn-input-group-text">
                         Place of Origin:
                     </InputGroup.Text>
                     <Form.Control
                         size="lg"
                         id="origin-input"
+                        className="signIn-form-control"
                         placeholder="(Where are you from?)"
                         value={origin}
                         onChange={(e) => setOrigin(e.target.value)}
@@ -112,12 +130,15 @@ const SignInForm = (props) => {
                     />
                 </InputGroup>
                 <InputGroup className="mb-3">
-                    <InputGroup.Text id="basic-addon-destination">
+                    <InputGroup.Text
+                        id="basic-addon-destination"
+                        className="signIn-input-group-text">
                         Destination:
                     </InputGroup.Text>
                     <Form.Control
                         size="lg"
                         id="destination-input"
+                        className="signIn-form-control"
                         placeholder="(What unit or who are you going to see)"
                         value={destination}
                         onChange={(e) => setDestination(e.target.value)}
