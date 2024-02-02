@@ -10,12 +10,25 @@ import GoBackButton from "../../model/components/Buttons/GoBackButton";
 import { useDatabaseContext } from "../../model/context/DatabaseContext";
 import axios from "axios";
 // import EnhancedTable from "../../model/components/Tables/EnhancedTable";
-import DBDataGrid from "../../model/components/Tables/DBDataGrid";
-import SingleRowSelectionGrid from "../../model/components/Tables/DBGrid";
+// import DBDataGrid from "../../model/components/Tables/DBDataGrid";
+import DBGrid from "../../model/components/Tables/DBGrid";
+import {
+    SelectionProvider,
+    useSelectionContext,
+} from "../../model/context/SelectionContext";
+import { useRowsContext } from "../../model/context/RowsContext";
+// import DataTable from "../../model/components/Tables/ButtonGrid";
 
 const DatabasePage = (props) => {
     const { currentDB, updateDB } = useDatabaseContext();
-    const { docSelection, setDocSelection } = useState([]);
+    const { rowSelection, updateSelection } = useSelectionContext();
+    const { currentRows, setCurrentRows } = useRowsContext();
+    // const [docSelection, setDocSelection] = useState([]);
+
+    // const getSelection = (selection) => {
+    //     setDocSelection(selection);
+    //     console.log("setDocSelection: ", selection);
+    // };
 
     const navigate = useNavigate();
 
@@ -24,23 +37,34 @@ const DatabasePage = (props) => {
     };
 
     const handleAddClick = (e) => {
-        navigate("/welcome");
+        const newRow = {
+            _id: "New",
+            title: "New",
+            firstName: "",
+            lastName: "",
+            origin: "",
+            contact: "",
+        };
+
+        // Add the new row to the existing rows
+        setCurrentRows((currentRows) => {
+            const updatedRows = [...currentRows];
+            updatedRows.unshift(newRow);
+            return updatedRows;
+        });
     };
 
     const handleRemoveClick = (e) => {
-        const docData = "";
-        console.log("handleRemoveClick: ", docData);
-        if (docData === null) {
+        console.log("handleRemoveClick: ", rowSelection);
+        if (rowSelection.length < 1) {
             alert("Please select a document to remove");
             return;
-        } else {
-            // setDocSelection(...docData);
         }
-        console.log("docSelection:", docSelection);
-        if (docSelection.length > 0) {
-            docSelection.map(async (doc) => {
+        console.log("docSelection:", rowSelection);
+        if (rowSelection.length > 0) {
+            rowSelection.map(async (doc) => {
                 await axios
-                    .delete(`http://localhost:3037/api/${doc._id}`)
+                    .delete(`http://localhost:3037/api/users/${doc}`)
                     .then((response) => {
                         console.log("Document deleted successfully");
                     })
@@ -48,8 +72,10 @@ const DatabasePage = (props) => {
                         console.error("There was an error!", error);
                     });
             });
-        } else {
         }
+        updateSelection([]);
+        fetchData();
+        console.log("handleRemoveClick END: ", rowSelection);
     };
 
     const handleSetEmployeeClick = (e) => {
@@ -60,20 +86,22 @@ const DatabasePage = (props) => {
         navigate("/welcome");
     };
 
-    useEffect(() => {
-        const fetchData = async () => {
-            console.log("Start of fetch");
+    const fetchData = async () => {
+        console.log("Start of fetch");
 
-            await axios
-                .get("http://localhost:3037/api/users")
-                .then((res) => {
-                    console.log("Axios .then():", res.data);
-                    updateDB(res.data);
-                })
-                .catch((error) => {
-                    console.error("Axios .error():", error);
-                });
-        };
+        await axios
+            .get("http://localhost:3037/api/users")
+            .then((res) => {
+                console.log("Axios .then():", res.data);
+                updateDB(res.data);
+                setCurrentRows(res.data.data);
+            })
+            .catch((error) => {
+                console.error("Axios .error():", error);
+            });
+    };
+
+    useEffect(() => {
         fetchData();
     }, []);
 
@@ -139,17 +167,16 @@ const DatabasePage = (props) => {
                         </div>
                     </Col>
                     <Col className="col-db-table">
-                        <Container
-                            fluid
-                            className="db-table-container overflow-visible">
+                        <div className="db-table-container">
                             {currentDB ? (
                                 // <EnhancedTable db={currentDB} />
                                 // <DBDataGrid />
-                                <SingleRowSelectionGrid />
+                                <DBGrid rows={currentRows} />
                             ) : (
+                                // <DataTable />
                                 <p>Loading...</p>
                             )}
-                        </Container>
+                        </div>
                     </Col>
                 </Row>
             </Container>

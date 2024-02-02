@@ -56,7 +56,7 @@
 
 /* Bootstrap-Table */
 
-.fixed-table-body,
+/* .fixed-table-body,
 div.float-right.pagination,
 #root
     > div.db-container.p-5.container-fluid
@@ -70,4 +70,4 @@ div.float-right.pagination,
     > div {
     overflow: visible !important;
     box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
+} */
