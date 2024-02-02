@@ -1,13 +1,14 @@
 import Button from "react-bootstrap/Button";
 
-const SignInButton = (props) => {
+const DBButton = (props) => {
     return (
         <Button
+            id={props.id}
             className={props.className}
             onClick={props.onClick}>
-            {props.buttonText || "SIGN IN"}
+            {props.buttonText || "DB Button"}
         </Button>
     );
 };
 
-export default SignInButton;
+export default DBButton;

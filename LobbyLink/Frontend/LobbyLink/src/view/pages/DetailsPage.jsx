@@ -6,7 +6,14 @@ import DetailsForm from "../../model/components/Forms/DetailsForm";
 import SignInButton from "../../model/components/Buttons/SignInButton";
 import SignOutButton from "../../model/components/Buttons/SignOutButton";
 
-const DetailsPage = (params) => {
+const DetailsPage = (props) => {
+    const handleSaveClick = () => {
+        console.log("Save CLicked");
+    };
+    const handleCancelClick = () => {
+        console.log("Cancel Clicked");
+    };
+
     return (
         <Container
             fluid
@@ -26,10 +33,12 @@ const DetailsPage = (params) => {
                         <div className="d-flex gap-3 my-4 justify-content-end">
                             <SignOutButton
                                 buttonText="Cancel"
+                                onClick={handleCancelClick}
                                 className="detailsPage-cancel-btn"
                             />
                             <SignInButton
                                 buttonText="Save"
+                                onClick={handleSaveClick}
                                 className="detailsPage-save-btn"
                             />
                         </div>

@@ -1,28 +1,66 @@
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
-import CurrentVisitorsTable from "../../model/components/Tables/CurrentVisitorsTable";
+// import CurrentVisitorsTable from "../../model/components/Tables/CurrentVisitorsTable";
+import GoBackButton from "../../model/components/Buttons/GoBackButton";
 import "../../css/pages/CurrentVisitors.css";
 import VisitorButton from "../../model/components/Buttons/VisitorButton";
+import GreenGradientBG from "../../model/components/Background/GreenGradientBG";
+import { useNavigate } from "react-router-dom";
 
-const CurrentVisitorsPage = (params) => {
+const CurrentVisitorsPage = (props) => {
+    const navigate = useNavigate();
+
+    const handleGoBackClick = (e) => {
+        navigate("/welcome");
+    };
     return (
-        <Container
-            fluid
-            className="currentVisitorsPage-container">
-            <Row className="justify-content-center">
-                <Col
-                    md="8"
-                    className="d-flex flex-column justify-content-center min-vh-100">
-                    <h1>Current Visitors</h1>
-                    <p className="currentVisitorsPage-sub-text">
-                        Find your name and press Sign Out
-                    </p>
-                    {/* <CurrentVisitorsTable /> */}
-                    <VisitorButton />
-                </Col>
-            </Row>
-        </Container>
+        <>
+            <GreenGradientBG />
+            <Container
+                fluid
+                className="currentVisitorsPage-container">
+                <GoBackButton
+                    onClick={handleGoBackClick}
+                    className="currentVisitors-goBack-button z-3"
+                />
+                <Row className="justify-content-center">
+                    <Col
+                        md="8"
+                        className="d-flex flex-column gap-3 justify-content-center min-vh-100 pb-5">
+                        <div>
+                            <p className="currentVisitorsPage-title">
+                                Current Visitors
+                            </p>
+                            <p className="currentVisitorsPage-sub-text">
+                                Find your name and press Sign Out
+                            </p>
+                        </div>
+                        {/* <CurrentVisitorsTable /> */}
+                        <VisitorButton />
+                        <VisitorButton />
+                        <VisitorButton />
+                        <VisitorButton />
+                        <VisitorButton />
+                        <VisitorButton />
+                        <VisitorButton />
+                        <VisitorButton />
+                        <VisitorButton />
+                        <VisitorButton />
+                        <VisitorButton />
+                        <VisitorButton />
+                        <VisitorButton />
+                        <VisitorButton />
+                        <VisitorButton />
+                        <VisitorButton />
+                        <VisitorButton />
+                        <VisitorButton />
+                        <VisitorButton />
+                        <VisitorButton />
+                    </Col>
+                </Row>
+            </Container>
+        </>
     );
 };
 

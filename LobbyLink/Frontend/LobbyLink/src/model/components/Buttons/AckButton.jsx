@@ -1,10 +1,10 @@
 import Button from "react-bootstrap/Button";
 
-const AckButton = (params) => {
+const AckButton = (props) => {
     return (
         <Button
-            className={params.className}
-            onClick={params.onClick}>
+            className={props.className}
+            onClick={props.onClick}>
             I acknowledge
             <br />
             SIGN IN

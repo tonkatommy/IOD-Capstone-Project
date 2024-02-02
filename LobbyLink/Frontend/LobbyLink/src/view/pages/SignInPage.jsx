@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -7,8 +6,12 @@ import SignInButton from "../../model/components/Buttons/SignInButton";
 import GoBackButton from "../../model/components/Buttons/GoBackButton";
 import SignInForm from "../../model/components/Forms/SignInForm";
 import "../../css/pages/SignIn.css";
+import { useUserContext } from "../../model/context/UserContext";
+import { useNavigate } from "react-router-dom";
 
-const SignInPage = (params) => {
+const SignInPage = (props) => {
+    const { currentUser, setCurrentUser } = useUserContext();
+
     const navigate = useNavigate();
 
     const handleSignInClick = (e) => {
@@ -35,7 +38,7 @@ const SignInPage = (params) => {
                     <p className="signInPage-required-text">
                         *All details required
                     </p>
-                    <SignInForm />
+                    <SignInForm user={currentUser} />
                 </Col>
                 <Col
                     md="6"
