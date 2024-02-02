@@ -9,15 +9,30 @@ import { useEffect, useState } from "react";
 import GoBackButton from "../../model/components/Buttons/GoBackButton";
 import { useDatabaseContext } from "../../model/context/DatabaseContext";
 import axios from "axios";
-// import EnhancedTable from "../../model/components/Tables/EnhancedTable";
-import DBDataGrid from "../../model/components/Tables/DBDataGrid";
-import SingleRowSelectionGrid from "../../model/components/Tables/DBGrid";
 
 const DatabasePage = (props) => {
     const { currentDB, updateDB } = useDatabaseContext();
-    const { docSelection, setDocSelection } = useState([]);
+    const [docSelection, setDocSelection] = useState([]);
 
     const navigate = useNavigate();
+
+    // ***************
+    // jQuery Functions
+    // ***************
+
+    let $table = $("#db-table");
+
+    $(function mounted() {
+        console.log(
+            "bootstrapTable: ",
+            currentDB ? currentDB.data : "undefined"
+        );
+        // let data = currentDB.data;
+        $table.bootstrapTable({
+            data: currentDB ? currentDB.data : null,
+            sortReset: true,
+        });
+    });
 
     const handleGoBackClick = (e) => {
         navigate("/welcome");
@@ -28,13 +43,13 @@ const DatabasePage = (props) => {
     };
 
     const handleRemoveClick = (e) => {
-        const docData = "";
+        const docData = JSON.stringify($table.bootstrapTable("getSelections"));
         console.log("handleRemoveClick: ", docData);
         if (docData === null) {
             alert("Please select a document to remove");
             return;
         } else {
-            // setDocSelection(...docData);
+            setDocSelection(docData);
         }
         console.log("docSelection:", docSelection);
         if (docSelection.length > 0) {
@@ -142,13 +157,61 @@ const DatabasePage = (props) => {
                         <Container
                             fluid
                             className="db-table-container overflow-visible">
-                            {currentDB ? (
-                                // <EnhancedTable db={currentDB} />
-                                // <DBDataGrid />
-                                <SingleRowSelectionGrid />
-                            ) : (
-                                <p>Loading...</p>
-                            )}
+                            <>
+                                <table
+                                    id="db-table"
+                                    className="table rounded-3 overflow-hidden "
+                                    data-toggle="db-table"
+                                    data-multiple-select-row="true"
+                                    data-click-to-select="true"
+                                    data-pagination="true"
+                                    data-show-pagination-switch="true"
+                                    data-search="true"
+                                    data-show-search-clear-button="true"
+                                    data-show-columns="true"
+                                    data-show-columns-toggle-all="true"
+                                    data-show-refresh="true"
+                                    data-sort-empty-last="true"
+                                    data-show-toggle="true">
+                                    <thead>
+                                        <tr className="table-primary">
+                                            <th
+                                                data-field="state"
+                                                data-checkbox="true"></th>
+                                            <th
+                                                data-field="_id"
+                                                data-sortable="true">
+                                                ID#
+                                            </th>
+                                            <th
+                                                data-field="title"
+                                                data-sortable="true">
+                                                Title
+                                            </th>
+                                            <th
+                                                data-field="firstName"
+                                                data-sortable="true">
+                                                First Name
+                                            </th>
+                                            <th
+                                                data-field="lastName"
+                                                data-sortable="true">
+                                                Last Name
+                                            </th>
+                                            <th
+                                                data-field="origin"
+                                                data-sortable="true">
+                                                Origin
+                                            </th>
+                                            <th
+                                                data-field="contact"
+                                                data-sortable="true">
+                                                Contact
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </>
                         </Container>
                     </Col>
                 </Row>
