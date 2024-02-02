@@ -1,7 +1,20 @@
 import Container from "react-bootstrap/esm/Container";
 import "../../../css/pages/Database.css";
+import { useDatabaseContext } from "../../context/DatabaseContext";
+
 import DBUserRow from "../../components/Tables/DBUserRow";
 import LoadingRow from "../../components/Tables/LoadingRow";
+
+const useDB = () => {
+    const { currentDB, updateDB } = useDatabaseContext();
+};
+let $table = $("#db-table");
+
+$(function mounted() {
+    console.log("bootstrapTable: ", currentDB);
+    let data = currentDB.data;
+    $table.bootstrapTable({ data: data });
+});
 
 const DatabaseUsersTable = (props) => {
     console.log("UserTableComponent:", props ? props.db : "props undefined");
@@ -15,13 +28,7 @@ const DatabaseUsersTable = (props) => {
     //         <LoadingRow />;
     //     }
     // };
-    let $table = $("#db-table");
 
-    $(function mounted() {
-        console.log("bootstrapTable: ", props.db);
-        let data = props.db;
-        $table.bootstrapTable({ data: props.db });
-    });
     return (
         <Container
             fluid

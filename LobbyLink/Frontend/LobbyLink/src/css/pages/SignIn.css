@@ -23,7 +23,7 @@
     margin: 0 auto;
 }
 
-.input-group-text {
+.SignIn-input-group-text {
     border-radius: 10px 0px 0px 10px;
     border: 1px solid #1e3244;
     min-width: 135px;
@@ -32,7 +32,7 @@
     font-family: "Delius", cursive;
 }
 
-.form-control {
+.signIn-form-control {
     border-radius: 0px 10px 10px 0px;
     border: 1px solid #1e3244;
     background: #c9e5ff;
