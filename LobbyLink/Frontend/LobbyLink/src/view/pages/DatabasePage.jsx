@@ -6,6 +6,7 @@ import Col from "react-bootstrap/esm/Col";
 import DBButton from "../../model/components/Buttons/DBButton";
 import Container from "react-bootstrap/esm/Container";
 import { useEffect } from "react";
+import { useGetData } from "../../controller/hooks/useGetData";
 import GoBackButton from "../../model/components/Buttons/GoBackButton";
 import { useDatabaseContext } from "../../model/context/DatabaseContext";
 import axios from "axios";
@@ -19,6 +20,8 @@ const DatabasePage = (props) => {
         navigate("/welcome");
     };
 
+    // updateDB(useGetData("http://localhost:3037/api/users"));
+
     useEffect(() => {
         const fetchData = async () => {
             console.log("Start of fetch");
@@ -26,16 +29,25 @@ const DatabasePage = (props) => {
             await axios
                 .get("http://localhost:3037/api/users")
                 .then((res) => {
-                    console.log(res.data);
+                    console.log("Axios .then():", res.data);
                     updateDB(res.data);
-                    console.log("Getting Data:", currentDB);
                 })
                 .catch((error) => {
-                    console.error(error);
+                    console.error("Axios .error():", error);
                 });
         };
         fetchData();
     }, []);
+
+    console.log("CurrentDB:", currentDB);
+
+    let $table = $("#db-table");
+
+    $(function mounted() {
+        console.log("bootstrapTable: ", props.db);
+        let data = props.db;
+        $table.bootstrapTable({ data: currentDB ? currentDB.data : null });
+    });
 
     return (
         <>
@@ -47,14 +59,14 @@ const DatabasePage = (props) => {
                     className="btn-db-goback"
                     onClick={handleGoBackClick}
                 />
-                <Row className="">
+                <Row className="db-title-row">
                     <p className="db-title text-start fs-1 fw-bold">
                         Database Management
                     </p>
                 </Row>
-                <Row className="">
+                <Row className="db-content">
                     <Col className="col-db-controls col-3 d-flex flex-column">
-                        <div className="sticky-top">
+                        <div>
                             <p className="text-start fs-3 fw-bold">
                                 DB Controls
                             </p>
@@ -89,7 +101,61 @@ const DatabasePage = (props) => {
                         </div>
                     </Col>
                     <Col className="col-db-table">
-                        <DatabaseUsersTable db={currentDB} />
+                        <Container
+                            fluid
+                            className="db-table-container rounded-3 p-0">
+                            <>
+                                <table
+                                    id="db-table"
+                                    className="table"
+                                    data-toggle="db-table"
+                                    data-multiple-select-row="true"
+                                    data-click-to-select="true"
+                                    data-side-pagination="server"
+                                    data-pagination="true"
+                                    data-search="true"
+                                    data-show-columns="true"
+                                    data-show-refresh="true">
+                                    <thead>
+                                        <tr className="table-primary">
+                                            <th
+                                                data-field="state"
+                                                data-checkbox="true"></th>
+                                            <th
+                                                data-field="_id"
+                                                data-sortable="true">
+                                                ID#
+                                            </th>
+                                            <th
+                                                data-field="title"
+                                                data-sortable="true">
+                                                Title
+                                            </th>
+                                            <th
+                                                data-field="firstName"
+                                                data-sortable="true">
+                                                First Name
+                                            </th>
+                                            <th
+                                                data-field="lastName"
+                                                data-sortable="true">
+                                                Last Name
+                                            </th>
+                                            <th
+                                                data-field="origin"
+                                                data-sortable="true">
+                                                Origin
+                                            </th>
+                                            <th
+                                                data-field="contact"
+                                                data-sortable="true">
+                                                Contact
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </>
+                        </Container>
                     </Col>
                 </Row>
             </Container>

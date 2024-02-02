@@ -7,13 +7,11 @@ import { DatabaseProvider } from "./model/context/DatabaseContext.jsx";
 import { UserProvider } from "./model/context/UserContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <DatabaseProvider>
-                <UserProvider>
-                    <App />
-                </UserProvider>
-            </DatabaseProvider>
-        </BrowserRouter>
-    </React.StrictMode>
+    <BrowserRouter>
+        <DatabaseProvider>
+            <UserProvider>
+                <App />
+            </UserProvider>
+        </DatabaseProvider>
+    </BrowserRouter>
 );

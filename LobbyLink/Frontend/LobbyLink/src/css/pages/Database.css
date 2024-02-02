@@ -57,3 +57,12 @@
     font-family: "Delius", cursive;
     box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
+
+/* Bootstrap-Table */
+.select,
+#locale {
+    width: 100%;
+}
+.like {
+    margin-right: 10px;
+}
