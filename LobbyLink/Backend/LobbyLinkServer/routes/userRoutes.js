@@ -17,16 +17,20 @@ router.post("/create", (req, res) => {
     Controllers.userController.createUser(req.body, res);
 });
 
-
 // Adds a POST route to insertMany users
-router.post("/insertMany", (req, res) => {
+router.post("/insert-many", (req, res) => {
     Controllers.userController.insertUsers(req.body, res);
 });
 
-
 // Adds a PUT route to update a user
-router.put("/:_id", (req, res) => {
+router.put("/update/:_id", (req, res) => {
+    // console.log("Mongoose: router.put: /update/:_id: req", req);
     Controllers.userController.updateUser(req, res);
+});
+
+// Adds a PUT route to update all users
+router.put("/update-users", (req, res) => {
+    Controllers.userController.updateUsers(req, res);
 });
 
 // Add a DELETE route to remove a user

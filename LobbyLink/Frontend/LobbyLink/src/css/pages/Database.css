@@ -4,9 +4,45 @@
 
 /* Text */
 .db-title {
+    font-size: 3rem;
+    color: #1e3244;
+    font-family: "Delius", cursive;
+    font-weight: bold;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.db-sub-title {
+    font-family: "Delius", cursive;
+    font-size: 1.2rem;
     color: #1e3244;
     text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
+.db-grid-box {
+    font-family: "Delius", cursive !important;
+    background-color: azure;
+    border-radius: 5px;
+    /* overflow: hidden; */
+}
+
+.MuiDataGrid-main {
+    font-family: "Delius", cursive;
+    font-weight: bold;
+}
+
+.MuiDataGrid-columnHeaderTitle {
+    font-weight: bold;
+    font-size: 1rem;
+    --unstable_DataGrid-headWeight: bold;
+}
+
+.MuiDataGrid-columnHeaders {
+    background-color: gray;
+}
+
+/* .MuiDataGrid-editInputCell {
+    font-family: "Delius", cursive;
+} */
 
 /* Buttons */
 

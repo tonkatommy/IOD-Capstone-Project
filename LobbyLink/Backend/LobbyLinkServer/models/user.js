@@ -8,7 +8,8 @@ const userSchema = new Schema({
     lastName: { type: String, trim: true, required: true },
     origin: { type: String, trim: true, required: true },
     contact: { type: String, trim: true },
-    safetyBrief: { type: Date },
+    safetyBrief: { type: Date, default: Date.now },
+    userType: { type: String, trim: true, required: true },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
 });

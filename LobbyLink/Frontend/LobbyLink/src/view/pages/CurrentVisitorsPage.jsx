@@ -5,17 +5,42 @@ import Col from "react-bootstrap/esm/Col";
 import GoBackButton from "../../model/components/Buttons/GoBackButton";
 import VisitorButton from "../../model/components/Buttons/VisitorButton";
 import GreenGradientBG from "../../model/components/Background/GreenGradientBG";
-
+// import { useDatabaseContext } from "../../model/context/DatabaseContext";
+import axios from "axios";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "../../css/pages/CurrentVisitors.css";
+import { DatabaseContext } from "../../model/context/DatabaseContext";
 
 const CurrentVisitorsPage = (props) => {
     const navigate = useNavigate();
+    const { currentDB, updateDB } = useContext(DatabaseContext);
+    console.log("currentVisitors: ", currentDB);
 
     const handleGoBackClick = (e) => {
         navigate("/welcome");
     };
+
+    // const fetchData = async () => {
+    //     console.log("Start of fetch");
+
+    //     await axios
+    //         .get("http://localhost:3037/api/users")
+    //         .then((res) => {
+    //             console.log("Axios .then():", res.data);
+    //             updateDB(res.data);
+    //             // setCurrentRows(res.data.data);
+    //         })
+    //         .catch((error) => {
+    //             console.error("Axios .error():", error);
+    //         });
+    // };
+
+    // useEffect(() => {
+    //     fetchData();
+    // }, []);
+
     return (
         <>
             <GreenGradientBG />
@@ -39,6 +64,14 @@ const CurrentVisitorsPage = (props) => {
                             </p>
                         </div>
                         {/* <CurrentVisitorsTable /> */}
+                        {currentDB ? (
+                            currentDB.map((user) => {
+                                console.log(user);
+                                <VisitorButton visitor={user} />;
+                            })
+                        ) : (
+                            <p>Loading...</p>
+                        )}
                         <VisitorButton />
                         <VisitorButton />
                         <VisitorButton />

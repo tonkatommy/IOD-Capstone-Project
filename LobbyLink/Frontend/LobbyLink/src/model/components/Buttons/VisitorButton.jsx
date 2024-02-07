@@ -8,20 +8,20 @@ const VisitorButton = (props) => {
     const handleSignOutClick = (e) => {
         console.log("Sign Out Pressed");
     };
-
+    console.log("visitor-buton: ", props);
     return (
         <div
             className="visitor-btn-group btn-group"
             role="group"
             aria-label="Basic example">
             <Button
-                id={props.id ? props.id : ""}
+                id={props._id ? props._id : ""}
                 className="visitor-button">
                 <Row>
                     <Col className="d-flex gap-2 align-items-center">
                         <i className="bi bi-person-fill"></i>
                         <span className="visitor-name me-2">
-                            CPL, Tommy Goodman
+                            CPL, Thomas Goodman
                         </span>
                     </Col>
                     <Col className="d-flex gap-2 align-items-center">

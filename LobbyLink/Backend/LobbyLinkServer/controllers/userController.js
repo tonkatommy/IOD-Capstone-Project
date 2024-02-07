@@ -46,12 +46,12 @@ const insertUsers = (data, res) => {
         });
 };
 
-
 const updateUser = (req, res) => {
     // updates the user matching the ID from the param using
     // JSON data POSTed in request body
-    console.log(req.body);
-    Models.User.findByIdAndUpdate(req.props._id, req.body, {
+    console.log("Mongoose: updateUser: ", req.body);
+    console.log("Mongoose: updateUser: ", req.params._id);
+    Models.User.findByIdAndUpdate(req.params._id, req.body, {
         new: true,
     })
         .then((data) => res.send({ result: 200, data: data }))
@@ -60,6 +60,35 @@ const updateUser = (req, res) => {
             res.send({ result: 500, error: err.message });
         });
 };
+
+const updateUsers = (req, res) => {
+    // Updates the entire database
+    // console.log("Mongoose: updateUsers req.body: ", req.body);
+
+    const reqData = req.body;
+    // console.log("Mongoose: updateUsers reqData: ", reqData);
+
+    const bulkOps = reqData.map((user) => ({
+        updateOne: {
+            filter: { _id: user._id },
+            update: { $set: { ...user } },
+        },
+    }));
+
+    console.log("bulk");
+
+    Models.User()
+        .collection.bulkWrite(bulkOps)
+        .then((data) => {
+            console.log("Mongoose: updateUsers .then(data) data: ", data);
+            res.send({ result: 200, data: data });
+        })
+        .catch((err) => {
+            console.log("Mongoose: updateUsers Error: ", err);
+            res.send({ result: 500, error: err.message });
+        });
+};
+
 const deleteUser = (req, res) => {
     const userId = req.params._id;
     console.log("deleteUser: ", userId);
@@ -78,5 +107,6 @@ module.exports = {
     createUser,
     insertUsers,
     updateUser,
+    updateUsers,
     deleteUser,
 };
