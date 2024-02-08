@@ -19,24 +19,50 @@ export const DatabaseProvider = (props) => {
 
     // Update the currentDB when it changes
     useEffect(() => {
+        pushCurrentDB();
+    }, [currentDB]);
+
+    const pushCurrentDB = () => {
         axios
             .put("http://localhost:3037/api/users/update-users", currentDB)
-            .catch((error) => console.error("Error updating data: ", error));
-    }, [currentDB]);
+            .then((response) => {
+                // setCurrentDB(response.data.data);
+                console.log("DBContext: useEffect: axios put: ", response.data);
+            })
+            .catch((error) =>
+                console.error(
+                    "DBContext: useEffect: Error updating data: ",
+                    error
+                )
+            );
+    };
 
     const getCurrentDB = () => {
         axios
             .get("http://localhost:3037/api/users")
             .then((response) => {
                 setCurrentDB(response.data.data);
-                console.log("DBContext axios get: ", response.data);
+                console.log(
+                    "DBContext: refreshCurrentDB: axios get: ",
+                    response.data
+                );
             })
-            .catch((error) => console.error("Error fetching data: ", error));
+            .catch((error) =>
+                console.error(
+                    "DBContext: refreshCurrentDB: Error fetching data: ",
+                    error
+                )
+            );
     };
 
     return (
         <DatabaseContext.Provider
-            value={{ currentDB, setCurrentDB, getCurrentDB }}>
+            value={{
+                currentDB,
+                setCurrentDB,
+                getCurrentDB,
+                pushCurrentDB,
+            }}>
             {props.children}
         </DatabaseContext.Provider>
     );

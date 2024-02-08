@@ -7,7 +7,7 @@ import VisitorButton from "../../model/components/Buttons/VisitorButton";
 import GreenGradientBG from "../../model/components/Background/GreenGradientBG";
 // import { useDatabaseContext } from "../../model/context/DatabaseContext";
 import axios from "axios";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "../../css/pages/CurrentVisitors.css";
@@ -15,11 +15,64 @@ import { DatabaseContext } from "../../model/context/DatabaseContext";
 
 const CurrentVisitorsPage = (props) => {
     const navigate = useNavigate();
-    const { currentDB, updateDB } = useContext(DatabaseContext);
-    console.log("currentVisitors: ", currentDB);
+    const { currentDB, setCurrentDB, refreshCurrentDB, pushCurrentDB } =
+        useContext(DatabaseContext);
+    console.log("CurrentVisitorsPage: currentDB: ", currentDB);
+
+    const [currentVisitors, setCurrentVisitors] = useState();
+
+    const updateVisitorsList = () => {
+        let visitors = currentDB.filter((user) => user.timeIn != null);
+        console.log("CurrentVisitorsPage: visitors: ", visitors);
+
+        setCurrentVisitors(visitors);
+    };
+
+    useEffect(() => {
+        updateVisitorsList();
+    }, []);
+
+    console.log("CurrentVisitorsPage: currentVisitors: ", currentVisitors);
 
     const handleGoBackClick = (e) => {
         navigate("/welcome");
+    };
+
+    const handleSignOutClick = (e) => {
+        console.log("CurrentVisitorsPage: handleSignOutClick: ", e.target.id);
+        const index = currentDB.findIndex((user) => user._id === e.target.id);
+        console.log("CurrentVisitorsPage: handleSignOutClick: index: ", index);
+        currentDB[index].timeIn = null;
+        console.log(
+            "CurrentVisitorsPage: handleSignOutClick: currentDB[index]: ",
+            currentDB[index]
+        );
+        setCurrentDB(currentDB);
+        pushCurrentDB();
+        console.log(
+            "CurrentVisitorsPage: handleSignOutClick: currentDB: ",
+            currentDB
+        );
+        updateVisitorsList();
+
+        navigate("/welcome");
+
+        // axios
+        //     .put(`/users/update/${e.target.id}`, {
+        //         timeIn: null,
+        //     })
+        //     .then((response) => {
+        //         console.log(
+        //             "CurrentVisitorsPage: handleSignOutClick: axios.put: ",
+        //             response.data
+        //         );
+        //     })
+        //     .catch((error) => {
+        //         console.error(
+        //             "CurrentVisitorsPage: handleSignOutClick: axios.put: ",
+        //             error
+        //         );
+        //     });
     };
 
     // const fetchData = async () => {
@@ -64,34 +117,22 @@ const CurrentVisitorsPage = (props) => {
                             </p>
                         </div>
                         {/* <CurrentVisitorsTable /> */}
-                        {currentDB ? (
-                            currentDB.map((user) => {
-                                console.log(user);
-                                <VisitorButton visitor={user} />;
+                        {currentVisitors ? (
+                            currentVisitors.map((user) => {
+                                console.log(
+                                    "CurrentVisitorsPage: currentVisitors.map: user: ",
+                                    user
+                                );
+                                return (
+                                    <VisitorButton
+                                        visitor={user}
+                                        handleSignOutClick={handleSignOutClick}
+                                    />
+                                );
                             })
                         ) : (
                             <p>Loading...</p>
                         )}
-                        <VisitorButton />
-                        <VisitorButton />
-                        <VisitorButton />
-                        <VisitorButton />
-                        <VisitorButton />
-                        <VisitorButton />
-                        <VisitorButton />
-                        <VisitorButton />
-                        <VisitorButton />
-                        <VisitorButton />
-                        <VisitorButton />
-                        <VisitorButton />
-                        <VisitorButton />
-                        <VisitorButton />
-                        <VisitorButton />
-                        <VisitorButton />
-                        <VisitorButton />
-                        <VisitorButton />
-                        <VisitorButton />
-                        <VisitorButton />
                     </Col>
                 </Row>
             </Container>

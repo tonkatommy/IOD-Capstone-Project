@@ -82,7 +82,8 @@ function EditToolbar(props) {
 }
 
 export default function FullCRUDTable() {
-    const { currentDB, getCurrentDB } = useContext(DatabaseContext);
+    const { currentDB, setCurrentDB, getCurrentDB, pushCurrentDB } =
+        useContext(DatabaseContext);
     console.log("FullCRUDTable: currentDB: ", currentDB);
     // const newRows = [...currentDB];
     // console.log("FullCRUDTable: newRows: ", newRows);

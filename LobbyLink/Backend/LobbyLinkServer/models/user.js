@@ -10,6 +10,8 @@ const userSchema = new Schema({
     contact: { type: String, trim: true },
     safetyBrief: { type: Date, default: Date.now },
     userType: { type: String, trim: true, required: true },
+    lastDestination: { type: String, trim: true },
+    timeIn: { type: Date },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
 });
