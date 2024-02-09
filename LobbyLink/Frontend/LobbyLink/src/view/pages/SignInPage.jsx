@@ -19,15 +19,25 @@ const SignInPage = (props) => {
     const navigate = useNavigate();
 
     const handleSignInClick = (e) => {
-        console.log("SignInPage: handleSignInClick: e: ", e.data);
+        console.log("SignInPage: handleSignInClick: e: ", e);
         getCurrentDB();
         console.log("SignInPage: handleSignInClick: currentDB: ", currentDB);
         if (e.data && e.data.safetyBrief) {
+            console.log(
+                "SignInPage: handleSignInClick: e.data.safetyBrief: ",
+                e.data.safetyBrief
+            );
+
             const sbDate = moment(e.data.safetyBrief);
+            console.log("sbDate", sbDate);
             const now = moment();
+            console.log("now", now);
             const diff = sbDate.diff(now, "days");
+            console.log("diff", diff);
             if (diff < 0) {
                 navigate("/safety-brief");
+            } else {
+                navigate("/welcome");
             }
         }
         // navigate("/safety-brief");
