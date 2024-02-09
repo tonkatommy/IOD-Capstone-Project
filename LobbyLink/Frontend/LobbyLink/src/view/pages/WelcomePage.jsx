@@ -1,24 +1,31 @@
-import "../../css/pages/Welcome.css";
+// Routing
+import { useNavigate } from "react-router-dom";
+// React-bootstrap UI
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
+import Button from "react-bootstrap/Button";
+// Custom Components
 import SignInButton from "../../model/components/Buttons/SignInButton";
 import SignOutButton from "../../model/components/Buttons/SignOutButton";
-import { useNavigate } from "react-router-dom";
-import Button from "react-bootstrap/Button";
+// Custom CSS
+import "../../css/pages/Welcome.css";
 
 const WelcomePage = (props) => {
     const navigate = useNavigate();
 
+    // Sign In click navigates to /signin route
     const handleSignInClick = (e) => {
         navigate("/signin");
     };
 
+    // Sign Out click navigates to /current-visitors route
     const handleSignOutClick = (e) => {
         navigate("/current-visitors"); // TODO: change to database page when created
     };
 
+    // Database click navigates to /database route
     const handleDBClick = (e) => {
         navigate("/database");
     };
